@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+             display:  flex;
+             justify-content: center;
+            align-items: center;
+        }
+         
+        h1{
+            text-align: center;
+        }
+         #header{
+             display: flex;
+             justify-content: center;
+            flex-direction: column;
+            box-shadow: 0px -25px 20px -20px rgba(0, 0, 0, 0.45), 25px 0 20px -20px rgba(0, 0, 0, 0.45), 0px 25px 20px -20px rgba(0, 0, 0, 0.45), -25px 0 20px -20px rgba(0, 0, 0, 0.45);
+            padding: 0 50px 0;
+              position: relative;
+             left: -800px;
+             animation: Todo 3s linear forwards;
+            /* text-align: center; */
+            /* border: 2px solid black */
+         }
+         @keyframes Todo {
+               100%{
+                 left: 0px;
+               }
+            
+         }
+       
+        #item{
+             border: 2px solid black;
+             padding: 10px;
+             background-color: azure;
+             /* width: 300px; */
+        }
+        #item>input{
+             /* outline: none; */
+             border: none;
+             padding: 10px;
+        }
+        #item>button{
+            padding: 10px;
+            border: none;
+        
+             
+        }
+        #item>button:hover{
+             background: navy;
+             color: white;
+             border-radius: 5px;
+            }
+            .Container{
+                padding: 0;
+            }
+         .Container>li{
+            border: 2px solid black;
+            list-style: none;
+            padding: 10px;
+            margin-bottom: 5px;
+            font-size: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.11), 0 2px 2px rgba(0,0,0,0.11), 0 4px 4px rgba(0,0,0,0.11), 0 8px 8px rgba(0,0,0,0.11), 0 16px 16px rgba(0,0,0,0.11), 0 32px 32px rgba(0,0,0,0.11);
+}
+
+        .Container>li>span{
+             float: right;
+             background-color: navy;
+             color: white;
+             padding: 8px;
+             border-radius: 5px;
+             position: relative;
+             top: -9px;
+             left: 10px;
+            
+         }
+         @media screen and (max-width:600) {
+               #header{
+                justify-content: left;
+                }
+                #item>input{
+                    padding: 5px;
+                     
+                }
+            
+            
+         }
+             
+         
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1> TODO List</h1>
+
+       <div id='item'>
+         <input type="text" id="k1" placeholder="Add items">
+           <button onclick="todo()">Add</button>
+        </div>
+        <div>
+
+            <ul class="Container">
+                <li>Gourav<span>X</span></li>
+                
+            </ul>
+        </div>
+    </div>
+      <script>
+          
+             let l1= document.getElementById('k1');
+              let content= document.querySelector(".Container");
+                 
+              function todo()
+              {
+                 if(l1.value==='')
+                 {
+                    alert("Please Enter your todo list")
+                    
+                 }
+                 else 
+                   {
+                        let li=document.createElement('li');
+                        li.innerHTML=l1.value;
+                        content.appendChild(li);
+                        let span= document.createElement('span');
+                        span.innerHTML="X"
+                        li.appendChild(span)
+                     
+                        
+                    }
+                    l1.innerHTML="";
+              }
+              
+            content.addEventListener('click',function(e){
+                  if(e.target.tagName==='SPAN')
+                  {
+                      e.target.parentElement.remove();
+                   }
+
+            })
+            // content.addEventListener('click',function(e){
+            //     if(e.target.tagName==="P")
+            //     {
+            //        l1.innerHTML.valueOf= e.target.parentElement;
+            //     }
+            // })
+
+              
+      </script>
+    
+</body>
+</html>
